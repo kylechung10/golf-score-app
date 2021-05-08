@@ -1,0 +1,23 @@
+{
+  "name": "golf-score-app",
+  "version": "1.0.0",
+  "description": "Golf Score App",
+  "main": "server.js",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"cd client && npm run start\"",
+    "server": "nodemon server.js"
+  },
+  "author": "Kyle Chung",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.0.2",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "type": "module"
+}
