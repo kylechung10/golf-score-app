@@ -63,15 +63,16 @@ function Navbar(props) {
             ) : undefined}
           </ul>
           {username ? (
-            <button
-              className="logout"
+            <NavLink
+              to="/"
+              className="logout-btn"
               onClick={() => {
                 showSidebar();
                 props.appLogin("");
               }}
             >
               LOG OUT
-            </button>
+            </NavLink>
           ) : undefined}
         </nav>
       </IconContext.Provider>

@@ -9,7 +9,7 @@ function Play(props) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
-    <section className="component-play">
+    <section className="page-play">
       <h1>Play</h1>
       {username ? (
         <GameSetup username={username} />

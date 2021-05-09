@@ -73,7 +73,7 @@ export default class Database {
         course: game.course,
         pin: game.pin,
         holes: game.holes,
-        date: new Date(),
+        date: new Date("<YYYY-mm-dd>"),
         players: [],
       };
       await this.collection.insertOne(newGame);

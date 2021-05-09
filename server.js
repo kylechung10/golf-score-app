@@ -57,7 +57,7 @@ App.get("/api/games/:pin", async (req, res) => {
 
 // GET ROUTE: Search for multiple games with an array of pins
 App.get("/api/player/games", async (req, res) => {
-  let pinArray = req.body.pinArray;
+  let pinArray = req.query.pinArray;
   const response = await dbGames.readMany(pinArray);
   res.json(response);
 });
