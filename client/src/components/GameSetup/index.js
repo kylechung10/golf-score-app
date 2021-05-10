@@ -6,10 +6,11 @@ function GameSetup(props) {
   const apiURL = process.env.apiURL || "http://localhost:5000";
   const [showJoin, setShowJoin] = useState(true);
   const [gameData, setGameData] = useState(null);
+  const { username } = props;
 
   const handleGameData = (gameData) => {
     setGameData({
-      username: props.username,
+      username: username,
       pin: gameData.pin,
       holes: gameData.holes,
       course: gameData.course,
@@ -20,6 +21,7 @@ function GameSetup(props) {
     <Scorecard gameData={gameData} />
   ) : (
     <div className="game-setup">
+      <h1>Welcome, {username}</h1>
       {showJoin ? (
         <JoinGame apiURL={apiURL} handleGameData={handleGameData} />
       ) : (
@@ -34,6 +36,7 @@ function GameSetup(props) {
 
 export default GameSetup;
 
+// Join an existing game
 function JoinGame(props) {
   const [inputPin, setInputPin] = useState("");
 
@@ -46,7 +49,7 @@ function JoinGame(props) {
     existingGame();
   }, []);
 
-  // Join existing game
+  // Get data from existing game
   const handleJoin = async (e) => {
     e.preventDefault();
     const response = await Axios.get(`${props.apiURL}/api/games/${inputPin}`);
@@ -81,6 +84,7 @@ function JoinGame(props) {
   );
 }
 
+// Create game with random pin and input data
 function CreateGame(props) {
   const [courseName, setCourseName] = useState("");
   const [holes, setHoles] = useState(0);
@@ -102,7 +106,7 @@ function CreateGame(props) {
 
   return (
     <form id="create-game" onSubmit={(e) => handleCreate(e)}>
-      <h2>Create New Game</h2>
+      <h1>Create New Game</h1>
       <fieldset>
         <div className="field-input">
           <label htmlFor="course-name">Course Name:</label>
@@ -138,8 +142,6 @@ function CreateGame(props) {
           </button>
         </div>
       </fieldset>
-      {holes}
-      {courseName}
     </form>
   );
 }

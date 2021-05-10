@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
@@ -10,13 +10,23 @@ import History from "./pages/History";
 function App() {
   const [username, setUsername] = useState("");
 
-  const appLogin = (passUsername) => {
+  useEffect(() => {
+    const localUsername = () => {
+      if (localStorage.getItem("username")) {
+        setUsername(localStorage.getItem("username"));
+      }
+    };
+    localUsername();
+  }, []);
+
+  const appLogin = (passUsername, rememberMe) => {
     setUsername(passUsername);
-    passUsername
-      ? // Sets username in localStorage
-        localStorage.setItem("username", passUsername)
-      : // If the logout button is pressed, remove the item from localStorage
-        localStorage.removeItem("username");
+    if (passUsername && rememberMe) {
+      // Sets username in localStorage if remember me is true
+      localStorage.setItem("username", passUsername);
+    }
+    // If the logout button is pressed, remove the item from localStorage
+    if (!passUsername) localStorage.removeItem("username");
   };
 
   return (
