@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Play from "./pages/Play";
@@ -26,7 +26,10 @@ function App() {
       localStorage.setItem("username", passUsername);
     }
     // If the logout button is pressed, remove the item from localStorage
-    if (!passUsername) localStorage.removeItem("username");
+    if (!passUsername) {
+      localStorage.removeItem("username");
+      sessionStorage.clear();
+    }
   };
 
   return (

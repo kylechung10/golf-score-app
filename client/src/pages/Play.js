@@ -16,6 +16,11 @@ function Play(props) {
         <GameSetup username={username} />
       ) : (
         <>
+          <img
+            src={`${process.env.PUBLIC_URL}/img/gwf_logo.svg`}
+            alt="Logo"
+            className="home-logo"
+          />
           {showLogin || createdAccount ? (
             <>
               <Login appLogin={appLogin} createdAccount={createdAccount} />

@@ -1,0 +1,53 @@
+@import "./components/colors";
+// Soleil-Font
+
+@mixin semibold {
+  font-weight: 600;
+  font-style: normal;
+}
+
+@mixin regular {
+  font-weight: 400;
+  font-style: normal;
+}
+
+@mixin light {
+  font-weight: 300;
+  font-style: normal;
+}
+
+/*Universal Styling*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: soleil, sans-serif;
+  font-size: 16px;
+  @include light();
+}
+
+body {
+  background-color: $bg-color;
+}
+
+.page-container {
+  min-height: 600px;
+  min-width: 300px;
+}
+
+h1 {
+  font-size: 36px;
+  @include semibold();
+}
+
+h2 {
+  font-size: 24px;
+  @include regular();
+}
+
+h3 {
+  font-size: 20px;
+  @include light();
+}
+
+/*Play Page*/
