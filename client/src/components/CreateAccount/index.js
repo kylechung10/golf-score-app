@@ -3,7 +3,7 @@ import Axios from "axios";
 
 function CreateAccount(props) {
   const [createUsername, setCreateUsername] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+
   const apiURL = process.env.apiURL || "http://localhost:5000";
 
   const createAccount = async (e) => {
@@ -12,31 +12,32 @@ function CreateAccount(props) {
       username: createUsername,
     });
     if (response.data) {
-      props.appLogin(response.data.username, rememberMe);
+      props.createdAccount(response.data.username);
     } else {
-      alert("Account already exists");
+      alert("An error has occurred or account already exists");
     }
   };
 
   return (
-    <form id="create-account" onSubmit={(e) => createAccount(e)}>
-      <input
-        type="text"
-        value={createUsername}
-        onChange={(e) => setCreateUsername(e.target.value)}
-      />
-      <input
-        type="checkbox"
-        id="remember-me"
-        checked={rememberMe}
-        onChange={() => setRememberMe(!rememberMe)}
-      />
-      <label htmlFor="remember-me">Remember Me</label>
-
-      <button type="submit" disabled={createUsername ? false : true}>
-        Create Account
-      </button>
-    </form>
+    <div className="create-account">
+      <h1>Create New Account</h1>
+      <form id="create-account-form" onSubmit={(e) => createAccount(e)}>
+        <div className="form-input">
+          <label htmlFor="create-user">Username</label>
+          <input
+            type="text"
+            id="create-user"
+            value={createUsername}
+            onChange={(e) => setCreateUsername(e.target.value)}
+          />
+        </div>
+        <div className="form-input">
+          <button type="submit" disabled={createUsername ? false : true}>
+            Create Account
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
 

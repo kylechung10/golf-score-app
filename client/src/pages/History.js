@@ -5,7 +5,6 @@ import * as Dayjs from "dayjs";
 import GameResults from "../components/GameResults";
 
 function History(props) {
-  // const username = props.username || localStorage.getItem("username");
   const { username } = props;
   const apiURL = process.env.apiURL || "http://localhost:5000";
   const [gameData, setGameData] = useState(null);
@@ -55,7 +54,7 @@ function History(props) {
     });
 
   return (
-    <section className="page-history">
+    <div className="page-container">
       <h1>Game History</h1>
       {detailsDisplay ? (
         <GameResults
@@ -65,7 +64,7 @@ function History(props) {
       ) : gameData ? (
         mapData()
       ) : undefined}
-    </section>
+    </div>
   );
 }
 
