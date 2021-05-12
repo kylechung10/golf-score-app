@@ -29,22 +29,21 @@ function Login(props) {
   }, [inputUsername, props.createdAccount]);
 
   return (
-    <div className="login">
-      <h1>Login to Play</h1>
+    <>
       <form id="login-form" onSubmit={(e) => loginUser(e)}>
+        <h1 className="form-header">Login to Play!</h1>
         <div className="form-input">
-          <label htmlFor="username">
-            Username:
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={inputUsername}
-              onChange={(e) => setInputUsername(e.target.value)}
-            />
-          </label>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            placeholder="Enter username"
+            value={inputUsername}
+            onChange={(e) => setInputUsername(e.target.value)}
+          />
         </div>
-        <div className="form-input">
+        <div className="form-input checkbox">
           <input
             type="checkbox"
             id="remember-me"
@@ -54,12 +53,16 @@ function Login(props) {
           <label htmlFor="remember-me">Remember Me</label>
         </div>
         <div className="form-input">
-          <button type="submit" disabled={inputUsername ? false : true}>
+          <button
+            type="submit"
+            className="btn-main"
+            disabled={inputUsername ? false : true}
+          >
             Login
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
 

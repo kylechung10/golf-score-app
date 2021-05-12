@@ -61,25 +61,27 @@ function JoinGame(props) {
   return (
     <form onSubmit={(e) => handleJoin(e)}>
       <h2>Join Game</h2>
-      <fieldset>
-        <div className="field-input">
-          <label htmlFor="game-pin">Game Pin</label>
-          <input
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            maxLength={4}
-            id="game-pin"
-            value={inputPin}
-            onChange={(e) => setInputPin(e.target.value)}
-          />
-        </div>
-        <div className="field-input">
-          <button type="submit" disabled={inputPin.length < 4}>
-            Join
-          </button>
-        </div>
-      </fieldset>
+      <div className="form-input">
+        <label htmlFor="game-pin">Game Pin</label>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          maxLength={4}
+          id="game-pin"
+          value={inputPin}
+          onChange={(e) => setInputPin(e.target.value)}
+        />
+      </div>
+      <div className="form-input">
+        <button
+          type="submit"
+          disabled={inputPin.length < 4}
+          className="btn-main"
+        >
+          Join
+        </button>
+      </div>
     </form>
   );
 }
@@ -107,41 +109,39 @@ function CreateGame(props) {
   return (
     <form id="create-game" onSubmit={(e) => handleCreate(e)}>
       <h1>Create New Game</h1>
-      <fieldset>
-        <div className="field-input">
-          <label htmlFor="course-name">Course Name:</label>
-          <input
-            type="text"
-            id="course-name"
-            maxLength={16}
-            required={true}
-            value={courseName}
-            onChange={(e) => setCourseName(e.target.value)}
-          />
-        </div>
-        <div className="field-input">
-          <label htmlFor="holes-radio">Number of Holes</label>
-          <input
-            type="radio"
-            value={9}
-            id="holes-radio"
-            checked={holes === "9"}
-            onChange={(e) => setHoles(e.target.value)}
-          />
-          <input
-            type="radio"
-            value={18}
-            id="holes-radio"
-            checked={holes === "18"}
-            onChange={(e) => setHoles(e.target.value)}
-          />
-        </div>
-        <div className="field-input">
-          <button type="submit" disabled={holes === 0}>
-            Create
-          </button>
-        </div>
-      </fieldset>
+      <div className="form-input">
+        <label htmlFor="course-name">Course Name:</label>
+        <input
+          type="text"
+          id="course-name"
+          maxLength={16}
+          required={true}
+          value={courseName}
+          onChange={(e) => setCourseName(e.target.value)}
+        />
+      </div>
+      <div className="form-input">
+        <label htmlFor="holes-radio">Number of Holes</label>
+        <input
+          type="radio"
+          value={9}
+          id="holes-radio"
+          checked={holes === "9"}
+          onChange={(e) => setHoles(e.target.value)}
+        />
+        <input
+          type="radio"
+          value={18}
+          id="holes-radio"
+          checked={holes === "18"}
+          onChange={(e) => setHoles(e.target.value)}
+        />
+      </div>
+      <div className="form-input">
+        <button type="submit" disabled={holes === 0} className="btn-main">
+          Create
+        </button>
+      </div>
     </form>
   );
 }

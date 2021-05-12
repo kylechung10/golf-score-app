@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import CreateAccount from "../components/CreateAccount";
 import GameSetup from "../components/GameSetup";
 import Login from "../components/Login";
+import "./Play.scss";
 
 function Play(props) {
   const { username } = props;
@@ -11,7 +12,7 @@ function Play(props) {
   const [createdAccount, setCreatedAccount] = useState(null);
 
   return (
-    <div className="page-container">
+    <div className="page-container play">
       {username ? (
         <GameSetup username={username} />
       ) : (
@@ -19,22 +20,25 @@ function Play(props) {
           <img
             src={`${process.env.PUBLIC_URL}/img/gwf_logo.svg`}
             alt="Logo"
-            className="home-logo"
+            id="home-logo"
           />
           {showLogin || createdAccount ? (
             <>
               <Login appLogin={appLogin} createdAccount={createdAccount} />
-              <label htmlFor="login-switch">Don't have an account?</label>
             </>
           ) : (
             <>
               <CreateAccount createdAccount={(e) => setCreatedAccount(e)} />
-              <label htmlFor="login-switch">Already have an account?</label>
             </>
           )}
-          <button onClick={() => setShowLogin(!showLogin)} id="login-switch">
-            {showLogin ? "Create Account" : "Log In"}
-          </button>
+          <div className="screen-switch">
+            <label htmlFor="login-switch">
+              {showLogin ? "Don't" : "Already"} have an account?
+            </label>
+            <button onClick={() => setShowLogin(!showLogin)} id="login-switch">
+              {showLogin ? "Create Account" : "Login"}
+            </button>
+          </div>
         </>
       )}
     </div>

@@ -58,6 +58,7 @@
   &.active {
     left: 0;
     transition: 300ms;
+    z-index: 1000;
   }
 
   &-items {

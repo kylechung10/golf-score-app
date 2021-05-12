@@ -19,25 +19,30 @@ function CreateAccount(props) {
   };
 
   return (
-    <div className="create-account">
-      <h1>Create New Account</h1>
+    <>
       <form id="create-account-form" onSubmit={(e) => createAccount(e)}>
+        <h1 className="form-header">Create Account</h1>
         <div className="form-input">
           <label htmlFor="create-user">Username</label>
           <input
             type="text"
             id="create-user"
+            placeholder="Create username"
             value={createUsername}
             onChange={(e) => setCreateUsername(e.target.value)}
           />
         </div>
         <div className="form-input">
-          <button type="submit" disabled={createUsername ? false : true}>
+          <button
+            type="submit"
+            className="btn-main"
+            disabled={createUsername ? false : true}
+          >
             Create Account
           </button>
         </div>
       </form>
-    </div>
+    </>
   );
 }
 
