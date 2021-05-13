@@ -1,7 +1,10 @@
 @import "../components/fonts", "../components/colors";
 
-.page-container.play {
-  justify-content: space-evenly;
+.page-container {
+  z-index: -1;
+  &.hero {
+    justify-content: space-evenly;
+  }
 
   .form-header {
     margin-bottom: 15px;

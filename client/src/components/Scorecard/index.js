@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import GameResults from "../GameResults";
+import "./Scorecard.scss";
 
 function Scorecard(props) {
   // Game Data from GameSetup component
@@ -33,13 +34,14 @@ function Scorecard(props) {
 
   // Map out the inputs for every hole based on the game array
   const mapGame = gameArray.map((game) => (
-    <div className="hole-input" key={game.holeNumber.toString()}>
-      <h3>Hole {game.holeNumber}</h3>
+    <div className="score-input" key={game.holeNumber.toString()}>
+      <label>Hole {game.holeNumber}</label>
       <input
         type="text"
         inputMode="numeric"
         pattern="[0-9]*"
         maxLength={2}
+        className={game.strokes !== 0 ? "completed" : undefined}
         value={game.strokes !== 0 ? game.strokes : ""}
         onFocus={(e) => e.target.select()}
         onChange={(e) => updateScore(+e.target.value, game.holeNumber)}
@@ -84,12 +86,21 @@ function Scorecard(props) {
   };
 
   return !submitGame ? (
-    <div className="scorecard">
-      <h2>Scorecard</h2>
-      <p>{gameData.pin}</p>
-      <p>{gameData.course}</p>
-      {mapGame}
-      <button onClick={() => finishGame()}>Finish Game</button>
+    <div className="page-container">
+      <div className="scorecard">
+        <div className="scorecard-title">
+          <span>Game PIN:</span>
+          <h1>{gameData.pin}</h1>
+        </div>
+        <div className="scorecard-info">
+          <h2>{gameData.course}</h2>
+          <p>{gameData.holes}-Hole Course</p>
+        </div>
+        <div className="scorecard-sheet">{mapGame}</div>
+        <button onClick={() => finishGame()} className="btn-main">
+          Finish Game
+        </button>
+      </div>
     </div>
   ) : (
     <GameResults gameData={gameData} />

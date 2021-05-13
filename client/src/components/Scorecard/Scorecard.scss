@@ -1,0 +1,64 @@
+@import "../colors", "../fonts";
+
+.scorecard {
+  width: 80%;
+  margin-bottom: 50px;
+  height: 100%;
+
+  &-title {
+    text-align: center;
+    span {
+      display: block;
+      margin-top: 10px;
+    }
+    h1 {
+      margin-top: -20px;
+      font-size: 56px;
+    }
+  }
+
+  &-info {
+    h2 {
+      text-transform: uppercase;
+    }
+    p {
+      margin-top: -5px;
+      opacity: 0.8;
+      @include light();
+    }
+  }
+
+  &-sheet {
+    width: 100%;
+    margin-top: 25px;
+
+    .score-input {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+
+      label {
+        font-size: 20px;
+        @include regular();
+      }
+
+      input {
+        height: 40px;
+        text-align: center;
+        font-size: 20px;
+        width: 200px;
+        border: none;
+        background-color: $input-color;
+        border-radius: 10px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+      .completed {
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+}

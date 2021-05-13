@@ -15,9 +15,8 @@ body {
 }
 
 .page-container {
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
   width: 100%;
-  min-height: 600px;
   min-width: 300px;
   display: flex;
   flex-direction: column;
@@ -89,7 +88,6 @@ form {
 
   &:hover {
     opacity: 0.9;
-    background: darkmagenta;
     cursor: pointer;
   }
 
