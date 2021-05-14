@@ -1,4 +1,7 @@
 import React from "react";
+import * as IoIcons from "react-icons/io";
+import { IconContext } from "react-icons";
+import "./GameResults.scss";
 
 function GameResults(props) {
   // Pass game details
@@ -25,35 +28,41 @@ function GameResults(props) {
     const totalScore = player.gameArray.reduce((a, b) => a + b, 0);
     return (
       <tr key={index}>
-        <th>{player.username}</th>
+        <th className="player-name">{player.username}</th>
         {scoreMap}
-        <th>{totalScore}</th>
+        <th className="total">{totalScore}</th>
       </tr>
     );
   });
 
   return (
-    <div>
-      <button onClick={props.goBack}>Back</button>
-      <h2>{detailsDisplay.date}</h2>
-      <h3>Course Name: {detailsDisplay.course}</h3>
-      <h3>Game Pin: {detailsDisplay.pin}</h3>
-      <table>
-        <thead>
-          <tr>
-            <th>Player Scores</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th>Hole</th>
-            {holeRows}
-            <th>Total</th>
-          </tr>
-          {playerMap}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <div className="details-display">
+        <div className="details-header">
+          <IconContext.Provider value={{ color: "#1e1e1e" }}>
+            <IoIcons.IoIosArrowBack id="arrow-back" onClick={props.goBack} />
+          </IconContext.Provider>
+          <h1>Details</h1>
+        </div>
+        <div className="details-info">
+          <p className="small-font">{detailsDisplay.date}</p>
+          <h2>{detailsDisplay.course}</h2>
+          <p>
+            Game Pin: <strong>{detailsDisplay.pin}</strong>
+          </p>
+        </div>
+        <table id="player-scores">
+          <tbody>
+            <tr className="heading-row">
+              <th className="hole">Hole</th>
+              {holeRows}
+              <th className="total">Total</th>
+            </tr>
+            {playerMap}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 

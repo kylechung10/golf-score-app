@@ -3,9 +3,11 @@ import Axios from "axios";
 import { useHistory } from "react-router-dom";
 import * as Dayjs from "dayjs";
 import GameResults from "../components/GameResults";
+import * as IoIcons from "react-icons/io";
+import "./History.scss";
 
 function History(props) {
-  const { username } = props;
+  const username = props.username || localStorage.getItem("username");
   const apiURL = process.env.apiURL || "http://localhost:5000";
   const [gameData, setGameData] = useState(null);
   const [detailsDisplay, setDetailsDisplay] = useState(null);
@@ -43,26 +45,38 @@ function History(props) {
       const totalScore = currentPlayer.gameArray.reduce((a, b) => a + b, 0);
       game.date = Dayjs(game.date).format("MMM DD, YYYY");
       return (
-        <div className="game-data" key={game._id}>
-          <h3>{game.date}</h3>
-          <h4>Your Total Score: {totalScore}</h4>
-          <p>Course: {game.course}</p>
-          <p>Players: {game.players.length}</p>
-          <button onClick={() => setDetailsDisplay(game)}>Details</button>
+        <div
+          className="game-data-child"
+          key={game._id}
+          onClick={() => setDetailsDisplay(game)}
+        >
+          <div className="game-data-info">
+            <div className="game-data-top">
+              <h2>{game.course}</h2>
+              <h3 className="score">Score: {totalScore}</h3>
+            </div>
+            <div className="game-data-bottom">
+              <p className="small-font">{game.date}</p>
+              <p className="small-font">Players: {game.players.length}</p>
+            </div>
+          </div>
+          <IoIcons.IoIosArrowForward className="arrow-forward" />
         </div>
       );
     });
 
   return (
-    <div className="page-container">
-      <h1>Game History</h1>
+    <div className="page-container game-history">
       {detailsDisplay ? (
         <GameResults
           detailsDisplay={detailsDisplay}
           goBack={() => setDetailsDisplay(false)}
         />
       ) : gameData ? (
-        mapData()
+        <>
+          <h1 className="history-header">Game History</h1>
+          <div className="game-data">{mapData()}</div>
+        </>
       ) : undefined}
     </div>
   );

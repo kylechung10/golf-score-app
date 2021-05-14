@@ -1,0 +1,74 @@
+@import "../colors", "../fonts";
+
+.details {
+  &-display {
+    width: 80%;
+    position: relative;
+  }
+
+  &-header {
+    margin: 10px 0;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    #arrow-back {
+      position: absolute;
+      left: 0;
+      font-size: 35px;
+    }
+  }
+
+  &-info {
+    h2 {
+      margin-top: -5px;
+    }
+    padding: 10px 0;
+  }
+}
+
+#player-scores {
+  display: block;
+  position: relative;
+  max-width: fit-content;
+  margin-top: 20px;
+  border-collapse: collapse;
+  overflow-x: scroll;
+  white-space: nowrap;
+
+  th,
+  td {
+    border: 1px solid $main-text-color;
+    text-align: center;
+    height: 40px;
+    min-width: 50px;
+  }
+
+  tr:nth-child(even) {
+    background-color: #e6e6e6;
+  }
+
+  .hole {
+    position: sticky;
+    left: 0;
+    background-color: $theme-color;
+    @include regular();
+  }
+  .player-name {
+    position: sticky;
+    left: 0;
+    padding: 0 20px;
+    @include regular();
+    background-color: #d4ffb4;
+  }
+  .total {
+    @include regular();
+    padding: 0 20px;
+  }
+
+  .heading-row {
+    background-color: $theme-color;
+    color: $secondary-text-color;
+  }
+}
