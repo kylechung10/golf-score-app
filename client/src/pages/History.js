@@ -72,12 +72,16 @@ function History(props) {
           detailsDisplay={detailsDisplay}
           goBack={() => setDetailsDisplay(false)}
         />
-      ) : gameData ? (
+      ) : (
         <>
           <h1 className="history-header">Game History</h1>
-          <div className="game-data">{mapData()}</div>
+          {gameData ? (
+            <div className="game-data">{mapData()}</div>
+          ) : (
+            <h3>You have no previous games</h3>
+          )}
         </>
-      ) : undefined}
+      )}
     </div>
   );
 }

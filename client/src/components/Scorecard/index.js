@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
-import GameResults from "../GameResults";
+import { useHistory } from "react-router-dom";
 import "./Scorecard.scss";
 
 function Scorecard(props) {
   // Game Data from GameSetup component
   const { gameData } = props;
   const [gameArray, setGameArray] = useState([]);
-  const [submitGame, setSubmitGame] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     const sessionGame = () => {
@@ -76,16 +76,17 @@ function Scorecard(props) {
       gameArray: pushScore,
     });
     if (response.data) {
-      setSubmitGame(true);
       Axios.patch(`${apiURL}/api/account/${gameData.username}`, {
         newPin: gameData.pin,
       });
+      // Clear session storage on submit and also redirect the user to the game history page
       sessionStorage.removeItem("game_score");
       sessionStorage.removeItem("game_pin");
+      history.push("/history");
     }
   };
 
-  return !submitGame ? (
+  return (
     <div className="page-container">
       <div className="scorecard">
         <div className="scorecard-title">
@@ -102,8 +103,6 @@ function Scorecard(props) {
         </button>
       </div>
     </div>
-  ) : (
-    <GameResults gameData={gameData} />
   );
 }
 

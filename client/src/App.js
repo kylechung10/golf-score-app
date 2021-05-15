@@ -4,7 +4,7 @@ import "./App.scss";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
 import Play from "./pages/Play";
-import Account from "./pages/Account";
+// import Account from "./pages/Account";
 import History from "./pages/History";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       // Sets username in localStorage if remember me is true
       localStorage.setItem("username", passUsername);
     }
-    // If the logout button is pressed, remove the item from localStorage
+    // If the logout button is pressed, remove the item from localStorage and sessionStorage
     if (!passUsername) {
       localStorage.removeItem("username");
       sessionStorage.clear();
@@ -50,7 +50,7 @@ function App() {
             exact
             render={(props) => <History {...props} username={username} />}
           />
-          <Route path="/account" exact component={Account} />
+          {/* <Route path="/account" exact component={Account} /> */}
         </Switch>
       </Router>
     </div>

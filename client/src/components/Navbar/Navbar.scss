@@ -2,6 +2,7 @@
 
 .navbar {
   background-color: $theme-color;
+  position: fixed;
   height: 50px;
   width: 100%;
   display: flex;
@@ -28,20 +29,15 @@
 }
 
 .nav-shade {
-  background-color: #000;
-  position: absolute;
-  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  height: 100%;
   width: 100%;
   top: 0;
-  left: -100%;
-  opacity: 0;
-  transition: opacity 300ms ease-in-out;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 1000;
-
-  &.active {
-    left: 0;
-    opacity: 0.75;
-  }
 }
 
 .nav-menu {

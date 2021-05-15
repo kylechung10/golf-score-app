@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io5";
-import * as MdIcons from "react-icons/md";
+// import * as MdIcons from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { IconContext } from "react-icons";
 import "./Navbar.scss";
@@ -11,7 +11,14 @@ function Navbar(props) {
   const { username } = props;
   const [sidebar, setSidebar] = useState(false);
 
+  // Toggle the navigation menu
   const showSidebar = () => setSidebar(!sidebar);
+
+  // Lock scrolling when the navigation menu is active
+  sidebar
+    ? (document.body.style.overflow = "hidden")
+    : (document.body.style.overflow = null);
+
   return (
     <>
       <div className="navbar">
@@ -22,10 +29,9 @@ function Navbar(props) {
           Golf With Friends
         </h2>
       </div>
-      <div
-        className={sidebar ? "nav-shade active" : "nav-shade"}
-        onClick={showSidebar}
-      ></div>
+      {sidebar ? (
+        <div className="nav-shade" onClick={showSidebar}></div>
+      ) : undefined}
       <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items">
           <li className="navbar-toggle">
@@ -60,12 +66,12 @@ function Navbar(props) {
                     <span>Game History</span>
                   </NavLink>
                 </li>
-                <li className="nav-text" onClick={showSidebar}>
+                {/* <li className="nav-text" onClick={showSidebar}>
                   <NavLink to="/account" activeClassName="active" exact={true}>
                     <MdIcons.MdAccountCircle />
                     <span>Account</span>
                   </NavLink>
-                </li>
+                </li> */}
                 <li className="nav-text">
                   <NavLink
                     to="/"
