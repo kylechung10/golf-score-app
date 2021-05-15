@@ -36,6 +36,10 @@
       @include regular();
       background: none;
       border: none;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 }

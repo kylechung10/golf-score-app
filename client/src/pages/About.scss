@@ -1,0 +1,39 @@
+@import "../components/colors", "../components/fonts";
+
+.about {
+  text-align: center;
+  &-header {
+    width: 100%;
+    background-color: #f8f8f885;
+    padding: 15px 0;
+    box-shadow: 2px 2px 7px rgba(0, 0, 0, 0.25);
+    h1 {
+      line-height: 50px;
+    }
+    h2 {
+      margin-top: -5px;
+      font-size: 30px;
+      color: $theme-color;
+      @include semibold;
+    }
+    h4 {
+      margin-top: -5px;
+      margin-bottom: 5px;
+    }
+  }
+
+  &-content {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  &-item {
+    margin: 20px 0;
+
+    img {
+      width: 100%;
+      margin: 10px 0;
+      box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
+    }
+  }
+}

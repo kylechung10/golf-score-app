@@ -51,6 +51,7 @@ function GameResults(props) {
             Game Pin: <strong>{detailsDisplay.pin}</strong>
           </p>
         </div>
+        <h2 id="table-heading">Scorecard</h2>
         <table id="player-scores">
           <tbody>
             <tr className="heading-row">
