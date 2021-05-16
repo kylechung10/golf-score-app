@@ -21,13 +21,15 @@ function Navbar(props) {
 
   return (
     <>
-      <div className="navbar">
-        <NavLink to="#" className="menu-bars" onClick={showSidebar}>
-          <FaIcons.FaBars />
-        </NavLink>
-        <h2 className="main-title" onClick={showSidebar}>
-          Golf With Friends
-        </h2>
+      <div className="banner">
+        <div className="navbar">
+          <NavLink to="#" className="menu-bars" onClick={showSidebar}>
+            <FaIcons.FaBars />
+          </NavLink>
+          <h2 className="main-title" onClick={showSidebar}>
+            Golf With Friends
+          </h2>
+        </div>
       </div>
       {sidebar ? (
         <div className="nav-shade" onClick={showSidebar}></div>

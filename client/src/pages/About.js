@@ -28,7 +28,7 @@ function About() {
       src: "history.jpg",
       alt: "Game history screenshot",
       description:
-        "View a list of all your previous games! Full details about each gameare available too. Details include date, game PIN, course type, and a table of all the players with their strokes & total score.",
+        "View a list of all your previous games! Full details about each game are available too. Details include date, game PIN, course name/type, and a table of all the players with their strokes & total score.",
     },
   ];
 

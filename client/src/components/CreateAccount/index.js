@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Modal from "../Modal/Modal";
 
 function CreateAccount(props) {
   const [createUsername, setCreateUsername] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
 
   const apiURL = process.env.apiURL || "http://localhost:5000";
 
@@ -14,12 +16,15 @@ function CreateAccount(props) {
     if (response.data) {
       props.createdAccount(response.data.username);
     } else {
-      alert("An error has occurred or account already exists");
+      setModalOpen(true);
     }
   };
 
   return (
     <>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        Account already exists
+      </Modal>
       <form id="create-account-form" onSubmit={(e) => createAccount(e)}>
         <h1 className="form-header">Create Account</h1>
         <div className="form-input">

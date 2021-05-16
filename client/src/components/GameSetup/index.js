@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Scorecard from "../Scorecard";
 import "./GameSetup.scss";
+import Modal from "../Modal/Modal.js";
 
 function GameSetup(props) {
   const apiURL = process.env.apiURL || "http://localhost:5000";
@@ -53,6 +54,7 @@ export default GameSetup;
 // Join an existing game
 function JoinGame(props) {
   const [inputPin, setInputPin] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const existingGame = () => {
@@ -69,34 +71,41 @@ function JoinGame(props) {
     const response = await Axios.get(`${props.apiURL}/api/games/${inputPin}`);
     if (response.data) {
       props.handleGameData(response.data);
+    } else {
+      setModalOpen(true);
     }
   };
 
   return (
-    <form onSubmit={(e) => handleJoin(e)}>
-      <div className="form-input">
-        <label htmlFor="game-pin">Game Pin</label>
-        <input
-          type="text"
-          placeholder="Enter 4-Digit PIN"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          maxLength={4}
-          id="game-pin"
-          value={inputPin}
-          onChange={(e) => setInputPin(e.target.value)}
-        />
-      </div>
-      <div className="form-input">
-        <button
-          type="submit"
-          disabled={inputPin.length < 4}
-          className="btn-main"
-        >
-          Join
-        </button>
-      </div>
-    </form>
+    <>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        Invalid PIN
+      </Modal>
+      <form onSubmit={(e) => handleJoin(e)}>
+        <div className="form-input">
+          <label htmlFor="game-pin">Game Pin</label>
+          <input
+            type="text"
+            placeholder="Enter 4-Digit PIN"
+            inputMode="numeric"
+            pattern="[0-9]*"
+            maxLength={4}
+            id="game-pin"
+            value={inputPin}
+            onChange={(e) => setInputPin(e.target.value)}
+          />
+        </div>
+        <div className="form-input">
+          <button
+            type="submit"
+            disabled={inputPin.length < 4}
+            className="btn-main"
+          >
+            Join
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
 

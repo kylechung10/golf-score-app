@@ -18,6 +18,8 @@ body {
 .page-container {
   padding-top: 50px;
   min-height: calc(100vh - 50px);
+  max-width: 600px;
+  margin: 0 auto;
   width: 100%;
   min-width: 300px;
   display: flex;
@@ -45,7 +47,6 @@ h3 {
 /*Input Universal Styling*/
 form {
   width: 80%;
-  max-width: 600px;
   display: flex;
   flex-direction: column;
   justify-content: center;

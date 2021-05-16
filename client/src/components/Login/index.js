@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import Modal from "../Modal/Modal.js";
 
 function Login(props) {
   const [inputUsername, setInputUsername] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
   // Use Heroku URL or localhost
   const apiURL = process.env.apiURL || "http://localhost:5000";
 
@@ -14,7 +16,7 @@ function Login(props) {
     if (response.data) {
       props.appLogin(response.data.username, rememberMe);
     } else {
-      alert("Not valid username!");
+      setModalOpen(true);
     }
   };
 
@@ -30,6 +32,9 @@ function Login(props) {
 
   return (
     <>
+      <Modal open={modalOpen} onClose={() => setModalOpen(false)}>
+        Invalid username
+      </Modal>
       <form id="login-form" onSubmit={(e) => loginUser(e)}>
         <h1 className="form-header">Login to Play!</h1>
         <div className="form-input">
