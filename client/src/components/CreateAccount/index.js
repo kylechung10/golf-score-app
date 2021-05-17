@@ -6,11 +6,9 @@ function CreateAccount(props) {
   const [createUsername, setCreateUsername] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
 
-  const apiURL = process.env.PUBLIC_URL || "http://localhost:5000";
-
   const createAccount = async (e) => {
     e.preventDefault();
-    const response = await Axios.post(`${apiURL}/api/account/create`, {
+    const response = await Axios.post(`/api/account/create`, {
       username: createUsername,
     });
     if (response.data) {

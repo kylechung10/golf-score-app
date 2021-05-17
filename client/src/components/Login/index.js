@@ -6,13 +6,11 @@ function Login(props) {
   const [inputUsername, setInputUsername] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  // Use Heroku URL or localhost
-  const apiURL = process.env.PUBLIC_URL || "http://localhost:5000";
 
   // Login the user based on input field
   const loginUser = async (e) => {
     e.preventDefault();
-    const response = await Axios.get(`${apiURL}/api/account/${inputUsername}`);
+    const response = await Axios.get(`/api/account/${inputUsername}`);
     if (response.data) {
       props.appLogin(response.data.username, rememberMe);
     } else {

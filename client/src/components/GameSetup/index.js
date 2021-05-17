@@ -5,7 +5,6 @@ import "./GameSetup.scss";
 import Modal from "../Modal/Modal.js";
 
 function GameSetup(props) {
-  const apiURL = process.env.PUBLIC_URL || "http://localhost:5000";
   const [showJoin, setShowJoin] = useState(true);
   const [gameData, setGameData] = useState(null);
   const { username } = props;
@@ -33,9 +32,9 @@ function GameSetup(props) {
         </p>
       </div>
       {showJoin ? (
-        <JoinGame apiURL={apiURL} handleGameData={handleGameData} />
+        <JoinGame handleGameData={handleGameData} />
       ) : (
-        <CreateGame apiURL={apiURL} handleGameData={handleGameData} />
+        <CreateGame handleGameData={handleGameData} />
       )}
       <div className="screen-switch">
         <label htmlFor="game-switch">
@@ -68,7 +67,7 @@ function JoinGame(props) {
   // Get data from existing game
   const handleJoin = async (e) => {
     e.preventDefault();
-    const response = await Axios.get(`${props.apiURL}/api/games/${inputPin}`);
+    const response = await Axios.get(`/api/games/${inputPin}`);
     if (response.data) {
       props.handleGameData(response.data);
     } else {
@@ -117,7 +116,7 @@ function CreateGame(props) {
   const handleCreate = async (e) => {
     e.preventDefault();
     const newPin = (Math.floor(Math.random() * 9000) + 1000).toString();
-    const response = await Axios.post(`${props.apiURL}/api/games/${newPin}`, {
+    const response = await Axios.post(`/api/games/${newPin}`, {
       course: courseName,
       holes: holes,
     });

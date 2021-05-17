@@ -8,7 +8,6 @@ import "./History.scss";
 
 function History(props) {
   const username = props.username || localStorage.getItem("username");
-  const apiURL = process.env.PUBLIC_URL || "http://localhost:5000";
   const [gameData, setGameData] = useState(null);
   const [detailsDisplay, setDetailsDisplay] = useState(null);
   const history = useHistory();
@@ -16,13 +15,11 @@ function History(props) {
   useEffect(() => {
     const handleUserData = async () => {
       if (username) {
-        const userHistory = await Axios.get(
-          `${apiURL}/api/account/${username}`
-        );
+        const userHistory = await Axios.get(`/api/account/${username}`);
         let gameHistory = userHistory.data.games;
         if (gameHistory.length > 0) {
           let passData = { pinArray: gameHistory };
-          const arrayData = await Axios.get(`${apiURL}/api/player/games`, {
+          const arrayData = await Axios.get(`/api/player/games`, {
             params: passData,
           });
           setGameData(arrayData.data.games);
@@ -33,7 +30,7 @@ function History(props) {
       }
     };
     handleUserData();
-  }, [username, apiURL, history]);
+  }, [username, history]);
 
   const mapData = () =>
     gameData.map((game) => {
