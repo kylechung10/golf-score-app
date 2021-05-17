@@ -73,7 +73,7 @@ export default class Database {
         course: game.course,
         pin: game.pin,
         holes: game.holes,
-        date: new Date("<YYYY-mm-dd>"),
+        date: Date(),
         players: [],
       };
       await this.collection.insertOne(newGame);
@@ -106,21 +106,14 @@ export default class Database {
     }
   }
 
-  // updateOne() Add player/Update player score within game
+  // updateOne() Add player score within game
   async updateOne(pin, playerData) {
     if (this.collection != null) {
-      // let status = { status: "Failed" };
-      // let updateGame = newPlayer
-      //   ? // If the user is new, add them to the players array
       let updateGame = await this.collection.updateOne(
         { pin: pin },
         { $push: { players: playerData } }
       );
-      // : // If the user is NOT new, update their score
-      //   await this.collection.updateOne(
-      //     { pin: pin, "players.username": playerData.username },
-      //     { $set: { "players.$.gameArray": playerData.gameArray } }
-      //   );
+      // If the update was successful, return the data
       if (updateGame.modifiedCount > 0) {
         return playerData;
       }
