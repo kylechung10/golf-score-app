@@ -33,8 +33,8 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Router>
+    <Router>
+      <div className="App">
         <Navbar username={username} appLogin={appLogin} />
         <Switch>
           <Route
@@ -52,8 +52,8 @@ function App() {
           />
           {/* <Route path="/account" exact component={Account} /> */}
         </Switch>
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 
