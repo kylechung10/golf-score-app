@@ -4,7 +4,7 @@
   "description": "Golf Score App",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"cd client && npm run start\"",
+    "devStart": "concurrently \"npm run server\" \"cd client && npm run start\"",
     "server": "nodemon server.js",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
