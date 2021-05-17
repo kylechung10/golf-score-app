@@ -42,7 +42,7 @@ function Navbar(props) {
             </NavLink>
             <img
               className="nav-logo"
-              src={`${process.env.PUBLIC_URL}/img/gwf_logo.svg`}
+              src={`${process.env.PUBLIC_URL}/img/gwf-logo.svg`}
               alt="Website Logo"
             />
             <h2 className="username">{username ? username : ""}</h2>

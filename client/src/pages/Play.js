@@ -16,7 +16,7 @@ function Play(props) {
   ) : (
     <div className="page-container hero">
       <img
-        src={`${process.env.PUBLIC_URL}/img/gwf_logo.svg`}
+        src={`${process.env.PUBLIC_URL}/img/gwf-logo.svg`}
         alt="Logo"
         id="home-logo"
       />

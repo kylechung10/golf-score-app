@@ -33,25 +33,36 @@ function About() {
   ];
 
   return (
-    <div className="page-container about">
-      <div className="about-header">
-        <h1>About</h1>
-        <h2>Golf With Friends</h2>
-        <h4>The multiplayer golf scorecard</h4>
+    <>
+      <div className="page-container about">
+        <div className="about-header">
+          <h1>About</h1>
+          <h2>Golf With Friends</h2>
+          <h4>The multiplayer golf scorecard</h4>
+          <p>
+            Created by{" "}
+            <a href="https://kylechung.com/" target="_blank" rel="noreferrer">
+              Kyle Chung
+            </a>
+          </p>
+        </div>
+        <div className="about-content">
+          {itemArray.map((item, index) => (
+            <div className="about-item" key={index}>
+              <h1>{item.title}</h1>
+              <img
+                src={process.env.PUBLIC_URL + "/img/" + item.src}
+                alt={item.alt}
+              />
+              <p>{item.description}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="about-content">
-        {itemArray.map((item, index) => (
-          <div className="about-item" key={index}>
-            <h1>{item.title}</h1>
-            <img
-              src={process.env.PUBLIC_URL + "/img/" + item.src}
-              alt={item.alt}
-            />
-            <p>{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
+      <footer>
+        <span>&copy; 2021, Golf With Friends</span>
+      </footer>
+    </>
   );
 }
 

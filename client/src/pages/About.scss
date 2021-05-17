@@ -20,6 +20,17 @@
       margin-top: -5px;
       margin-bottom: 5px;
     }
+    p {
+      font-size: 14px;
+      a {
+        font-size: 14px;
+        color: $main-text-color;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
   }
 
   &-content {
@@ -36,4 +47,14 @@
       box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.25);
     }
   }
+}
+
+footer {
+  span {
+    font-size: 14px;
+  }
+  text-align: center;
+  background-color: $theme-color;
+  color: $secondary-text-color;
+  padding: 15px 0;
 }
