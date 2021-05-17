@@ -78,9 +78,9 @@ App.patch("/api/games/:pin", async (req, res) => {
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
-  App.use(Express.static(Path.join(__dirname, "client", "build")));
+  App.use(Express.static("client/build"));
   App.get("*", (req, res) => {
-    res.sendFile(Path.join(__dirname, "client", "build", "index.html"));
+    res.sendFile(Path.resolve(__dirname, "client", "build", "index.html"));
   });
 }
 
