@@ -154,6 +154,7 @@ function CreateGame(props) {
             className="course-type-btn"
             disabled={holes === 9}
             onClick={() => setHoles(9)}
+            style={{ marginRight: "5px" }}
           >
             9-Hole
             <br />
@@ -165,6 +166,7 @@ function CreateGame(props) {
             className="course-type-btn"
             disabled={holes === 18}
             onClick={() => setHoles(18)}
+            style={{ marginLeft: "5px" }}
           >
             18-Hole
             <br />

@@ -70,13 +70,12 @@ function Scorecard(props) {
     for (let score of gameArray) {
       pushScore.push(score.strokes);
     }
-    const apiURL = process.env.apiURL || "http://localhost:5000";
-    const response = await Axios.patch(`${apiURL}/api/games/${gameData.pin}`, {
+    const response = await Axios.patch(`/api/games/${gameData.pin}`, {
       username: gameData.username,
       gameArray: pushScore,
     });
     if (response.data) {
-      Axios.patch(`${apiURL}/api/account/${gameData.username}`, {
+      Axios.patch(`/api/account/${gameData.username}`, {
         newPin: gameData.pin,
       });
       // Clear session storage on submit and also redirect the user to the game history page

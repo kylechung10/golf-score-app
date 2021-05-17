@@ -29,13 +29,14 @@
     width: 80%;
     display: inline-flex;
     justify-content: center;
-    gap: 15px;
+    margin-bottom: 30px;
 
     button {
       color: $theme-color;
       @include regular();
       background: none;
       border: none;
+      margin-left: 15px;
 
       &:hover {
         cursor: pointer;
