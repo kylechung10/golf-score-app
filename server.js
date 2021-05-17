@@ -1,6 +1,7 @@
 import Database from "./database/Database.js";
 import Express from "express";
 import CORS from "cors";
+import Path from "path";
 
 const App = Express();
 const port = process.env.PORT || 5000;
@@ -70,12 +71,18 @@ App.patch("/api/games/:pin", async (req, res) => {
     username: req.body.username,
     gameArray: req.body.gameArray,
   };
-  // If the player is new, add to the players
-  // If player is not new, update the score
-  // let newPlayer = req.body.newPlayer;
   const response = await dbGames.updateOne(pin, playerData);
   res.json(response);
 });
+
+// Serve static assets if in production
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  App.use(Express.static("client/build"));
+  App.get("*", (req, res) => {
+    res.sendFile(Path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 // Listen to port
 App.listen(port, () => console.log(`Server started on port ${port}`));
