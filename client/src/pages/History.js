@@ -8,7 +8,7 @@ import "./History.scss";
 
 function History(props) {
   const username = props.username || localStorage.getItem("username");
-  const apiURL = process.env.apiURL || "http://localhost:5000";
+  const apiURL = process.env.PUBLIC_URL || "http://localhost:5000";
   const [gameData, setGameData] = useState(null);
   const [detailsDisplay, setDetailsDisplay] = useState(null);
   const history = useHistory();

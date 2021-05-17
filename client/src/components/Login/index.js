@@ -7,7 +7,7 @@ function Login(props) {
   const [rememberMe, setRememberMe] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   // Use Heroku URL or localhost
-  const apiURL = process.env.apiURL || "http://localhost:5000";
+  const apiURL = process.env.PUBLIC_URL || "http://localhost:5000";
 
   // Login the user based on input field
   const loginUser = async (e) => {

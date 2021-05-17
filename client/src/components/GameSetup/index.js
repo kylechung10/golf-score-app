@@ -5,7 +5,7 @@ import "./GameSetup.scss";
 import Modal from "../Modal/Modal.js";
 
 function GameSetup(props) {
-  const apiURL = process.env.apiURL || "http://localhost:5000";
+  const apiURL = process.env.PUBLIC_URL || "http://localhost:5000";
   const [showJoin, setShowJoin] = useState(true);
   const [gameData, setGameData] = useState(null);
   const { username } = props;
