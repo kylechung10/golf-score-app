@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as BrowserRouter,
+  Switch,
+  Route,
+} from "react-router-dom";
 import "./App.scss";
 import Navbar from "./components/Navbar";
 import About from "./pages/About";
@@ -33,7 +37,7 @@ function App() {
   };
 
   return (
-    <Router>
+    <BrowserRouter>
       <div className="App">
         <Navbar username={username} appLogin={appLogin} />
         <Switch>
@@ -53,7 +57,7 @@ function App() {
           {/* <Route path="/account" exact component={Account} /> */}
         </Switch>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 }
 
