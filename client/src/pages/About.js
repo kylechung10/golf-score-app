@@ -8,7 +8,7 @@ function About() {
       src: "join.jpg",
       alt: "Join game screenshot",
       description:
-        "Join an exisitng game created by another user with ease. Simply enter the 4-digit PIN displayed on their scorecard screen.",
+        "Join an existing game created by another user with ease. Simply enter the 4-digit PIN displayed on their scorecard screen.",
     },
     {
       title: "Create",

@@ -27,7 +27,7 @@ function GameSetup(props) {
         <h1>{showJoin ? "Join" : "Create"} Game</h1>
         <p>
           {showJoin
-            ? "Enter 4-digit PIN of an exisiting game!"
+            ? "Enter 4-digit PIN of an existing game!"
             : "Create a new game for others to join!"}
         </p>
       </div>
