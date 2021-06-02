@@ -7,7 +7,7 @@
 - This application will track golf scores and allow multiple people to track golf scores together. It is built with the MERN stack and will dynamically track your score along with scores from other users in the game.
 - It was designed for mobile as players would be using it on the golf course.
 
-![gwf-thumbnail](https://user-images.githubusercontent.com/47342503/120406472-eb585c00-c318-11eb-9205-5f0a6917e477.jpg)
+![gwf-thumbnail](https://user-images.githubusercontent.com/47342503/120413246-e8179d00-c325-11eb-8126-346e9ddbbff4.jpg)
 
 ## Features
 ### Login / Create Account
@@ -20,7 +20,7 @@
 
 ### Join Game
 - Join an existing game created by another user with ease. Simply enter the 4-digit PIN displayed on their scorecard screen.
-<img src="https://user-images.githubusercontent.com/47342503/120407534-54d96a00-c31b-11eb-8400-4f129175093f.jpg" height="500px">
+<img src="https://user-images.githubusercontent.com/47342503/120413191-d6ce9080-c325-11eb-949c-9ca0bc60210d.jpg" height="500px">
 
 ### Create Game
 - Create a new game for others to join or just for yourself. Just enter the course name and course type.
