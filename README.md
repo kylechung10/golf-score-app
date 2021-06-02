@@ -11,7 +11,7 @@
 
 ## Features
 ### Login / Create Account
-- Login to an exisiting account to access game creation, joining a game, and game history.
+- Login to an existing account to access game creation, joining a game, and game history.
 <img src="https://user-images.githubusercontent.com/47342503/120406888-ec3dbd80-c319-11eb-9f74-8fc8003b88e9.PNG" height="500px">
 
 - Create a new account on the database.
@@ -19,7 +19,7 @@
 
 
 ### Join Game
-- Join an exisitng game created by another user with ease. Simply enter the 4-digit PIN displayed on their scorecard screen.
+- Join an existing game created by another user with ease. Simply enter the 4-digit PIN displayed on their scorecard screen.
 <img src="https://user-images.githubusercontent.com/47342503/120407534-54d96a00-c31b-11eb-8400-4f129175093f.jpg" height="500px">
 
 ### Create Game
