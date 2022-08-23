@@ -1,7 +1,7 @@
 # Golf With Friends
 **Developed by: Kyle Chung**
 
-**Live site: https://www.golfwithfriends.app/**
+**Live site: https://golf-with-friends.herokuapp.com/**
 
 ## Overview
 - This application will track golf scores and allow multiple people to track golf scores together. It is built with the MERN stack and will dynamically track your score along with scores from other users in the game.
